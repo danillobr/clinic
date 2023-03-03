@@ -6,6 +6,8 @@ import { AppError } from "../../errors/AppError";
 
 import { router } from "./routes";
 
+import "../typeorm/database";
+
 const app = express();
 
 app.use(express.json());

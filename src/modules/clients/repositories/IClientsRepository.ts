@@ -1,5 +1,5 @@
 import { ICreateClientDTO } from "../dtos/ICreateClientDTO";
-import { Client } from "../infra/typeorm/entities/Client";
+import { Client } from "../infra/typeorm/entities/Attendant";
 
 interface IClientsRepository {
   create(data: ICreateClientDTO): Promise<Client>;

@@ -1,5 +1,5 @@
 import { ICreateClientDTO } from "@modules/clients/dtos/ICreateClientDTO";
-import { Client } from "@modules/clients/infra/typeorm/entities/Client";
+import { Client } from "@modules/clients/infra/typeorm/entities/Attendant";
 import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "@shared/errors/AppError";

@@ -33,7 +33,7 @@
         }
       }
     },
-    "/sessions": {
+    "/clients/sessions": {
       "post": {
         "tags": ["Session"],
         "summary": "Authentication client",
@@ -64,6 +64,29 @@
           }
         }  
       } 
+    },"/attendant": {
+      "post": {
+        "tags": ["attendants"],
+        "summary": "Create a attendant",
+        "description": "Create a new attendant",
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref": "#/definitions/Attendant"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          },
+          "400":{
+            "description": "Attendant already exists!"
+          }
+        }
+      }
     }
   },
   "definitions":{
@@ -84,6 +107,24 @@
         },
         "cpf": {
           "type": "string"
+        }
+      }
+    },
+    "Attendant":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password":{
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "basic"]
         }
       }
     }

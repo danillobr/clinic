@@ -31,13 +31,17 @@ class ClientsRepository implements IClientsRepository {
   }
 
   async findByCPFAndEmail(cpf: string, email: string): Promise<Client> {
-    return this.repository.findOne({
+    return await this.repository.findOne({
       where: [{ cpf }, { email }],
     });
   }
 
-  findByEmail(email: string): Promise<Client> {
-    return this.repository.findOne({ email });
+  async findByEmail(email: string): Promise<Client> {
+    return await this.repository.findOne({ email });
+  }
+
+  async findById(id: string): Promise<Client> {
+    return await this.repository.findOne(id);
   }
 }
 

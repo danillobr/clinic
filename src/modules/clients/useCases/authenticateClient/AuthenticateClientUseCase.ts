@@ -3,6 +3,7 @@ import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import auth from "@config/auth";
 
 interface IResponse {
   client: {
@@ -40,7 +41,7 @@ class AuthenticateClientUseCase {
     }
 
     //Gerar jsonwebtoken
-    const token = sign({}, "14c208b3c86ff07280ca891ddc370608", {
+    const token = sign({}, auth.secret_token, {
       subject: client.id,
       expiresIn: "1d",
     });

@@ -122,6 +122,33 @@
           }
         }  
       } 
+    },
+    "/professionals": {
+      "post": {
+        "tags": ["Attendants"],
+        "summary": "Create a professional",
+        "description": "Create a new professional",
+        "security":[
+          {"bearerAuth": []}
+        ],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref": "#/definitions/Professional"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          },
+          "400":{
+            "description": "Professional already exists!"
+          }
+        }
+      }
     }
   },
   "definitions":{
@@ -160,6 +187,17 @@
         "role": {
           "type": "string",
           "enum": ["admin", "basic"]
+        }
+      }
+    },
+    "Professional":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"         
+        },
+        "fone": {
+          "type": "string"
         }
       }
     }

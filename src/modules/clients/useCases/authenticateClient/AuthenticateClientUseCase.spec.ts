@@ -39,8 +39,6 @@ describe("", () => {
       password: client.password,
     });
 
-    console.log(token);
-
     expect(token).toHaveProperty("token");
   });
 

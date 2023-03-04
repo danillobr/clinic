@@ -1,8 +1,8 @@
-import { ICreateClientDTO } from "../dtos/ICreateClientDTO";
-import { Client } from "../infra/typeorm/entities/Client";
-import { IClientsRepository } from "../repositories/IClientsRepository";
+import { ICreateClientDTO } from "@modules/clients/dtos/ICreateClientDTO";
+import { Client } from "@modules/clients/infra/typeorm/entities/Client";
+import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { inject, injectable } from "tsyringe";
-import { AppError } from "../../../shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 import { hash } from "bcrypt";
 
 @injectable()

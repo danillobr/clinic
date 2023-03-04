@@ -1,7 +1,7 @@
-import { IClientsRepository } from "../../../../repositories/IClientsRepository";
+import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { Repository, getRepository } from "typeorm";
-import { Client } from "../Client";
-import { ICreateClientDTO } from "../../../../dtos/ICreateClientDTO";
+import { Client } from "../entities/Client";
+import { ICreateClientDTO } from "@modules/clients/dtos/ICreateClientDTO";
 
 class ClientsRepository implements IClientsRepository {
   private repository: Repository<Client>;
@@ -34,6 +34,10 @@ class ClientsRepository implements IClientsRepository {
     return this.repository.findOne({
       where: [{ cpf }, { email }],
     });
+  }
+
+  findByEmail(email: string): Promise<Client> {
+    return this.repository.findOne({ email });
   }
 }
 

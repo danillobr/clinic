@@ -1,6 +1,6 @@
-import { AppError } from "../../../shared/errors/AppError";
-import { IClientsRepository } from "../repositories/IClientsRepository";
-import { ClientsRepositoryInMemory } from "../repositories/in-memory/ClientsRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
+import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
+import { ClientsRepositoryInMemory } from "@modules/clients/repositories/in-memory/ClientsRepositoryInMemory";
 import { CreateClientUseCase } from "./CreateClientUseCase";
 
 let clientsRepositoryInMemory: IClientsRepository;

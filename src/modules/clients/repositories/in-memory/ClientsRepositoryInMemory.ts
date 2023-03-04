@@ -1,5 +1,5 @@
-import { ICreateClientDTO } from "../../dtos/ICreateClientDTO";
-import { Client } from "../../infra/typeorm/entities/Client";
+import { ICreateClientDTO } from "@modules/clients/dtos/ICreateClientDTO";
+import { Client } from "@modules/clients/infra/typeorm/entities/Client";
 import { IClientsRepository } from "../IClientsRepository";
 
 class ClientsRepositoryInMemory implements IClientsRepository {
@@ -31,6 +31,10 @@ class ClientsRepositoryInMemory implements IClientsRepository {
     return this.clients.find(
       (client) => client.cpf === cpf || client.email === email
     );
+  }
+
+  async findByEmail(email: string): Promise<Client> {
+    return this.clients.find((client) => client.email === email);
   }
 }
 

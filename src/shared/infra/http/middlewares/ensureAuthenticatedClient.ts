@@ -2,13 +2,13 @@ import { Response, Request, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import auth from "@config/auth";
 import { AppError } from "@shared/errors/AppError";
-import { ClientsRepository } from "@modules/attendant/infra/typeorm/repositories/ClientsRepository";
+import { ClientsRepository } from "@modules/clients/infra/typeorm/repositories/ClientsRepository";
 
 interface IPayload {
   sub: string;
 }
 
-export async function ensureAuthenticated(
+export async function ensureAuthenticatedClient(
   request: Request,
   response: Response,
   next: NextFunction
@@ -29,12 +29,6 @@ export async function ensureAuthenticated(
     const user = clientRepository.findById(client_id);
 
     if (!user) {
-      // atendenteRepository = AtentendeRepository();
-      // const atendente = atendenteRepository.findById(user_id);
-
-      // if (!atendente) {
-      // throw new AppError("User does not exists!", 401);
-      // }
       throw new AppError("User does not exists!", 401);
     }
 

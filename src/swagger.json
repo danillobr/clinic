@@ -11,7 +11,7 @@
   "paths": {
     "/clients": {
       "post": {
-        "tags": ["clients"],
+        "tags": ["Clients"],
         "summary": "Create a client",
         "description": "Create a new client",
         "requestBody": {
@@ -35,7 +35,7 @@
     },
     "/clients/sessions": {
       "post": {
-        "tags": ["Session"],
+        "tags": ["Clients"],
         "summary": "Authentication client",
         "description": "Authentication client",
         "requestBody": {
@@ -64,11 +64,14 @@
           }
         }  
       } 
-    },"/attendant": {
+    },"/attendants": {
       "post": {
-        "tags": ["attendants"],
+        "tags": ["Attendants"],
         "summary": "Create a attendant",
         "description": "Create a new attendant",
+        "security":[
+          {"bearerAuth": []}
+        ],
         "requestBody": {
           "content":{
             "application/json":{
@@ -87,6 +90,38 @@
           }
         }
       }
+    },
+    "/attendants/sessions": {
+      "post": {
+        "tags": ["Attendants"],
+        "summary": "Authentication attendant",
+        "description": "Authentication attendant",
+        "requestBody": {
+          "content": {
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }  
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "Sucess"
+          },
+          "400": {
+            "description": "Email or password incorrect!"
+          }
+        }  
+      } 
     }
   },
   "definitions":{
@@ -126,6 +161,15 @@
           "type": "string",
           "enum": ["admin", "basic"]
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

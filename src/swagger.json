@@ -1,0 +1,91 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Clinic Documentation",
+    "description": "This is an API Clinic",
+    "version": "1.0.0",
+    "contact": {
+      "email": "danillorodriguesabreu@gmail.com"
+    }
+  },
+  "paths": {
+    "/clients": {
+      "post": {
+        "tags": ["clients"],
+        "summary": "Create a client",
+        "description": "Create a new client",
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          },
+          "400":{
+            "description": "Client already exists!"
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Session"],
+        "summary": "Authentication client",
+        "description": "Authentication client",
+        "requestBody": {
+          "content": {
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }  
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "Sucess"
+          },
+          "400": {
+            "description": "Email or password incorrect!"
+          }
+        }  
+      } 
+    }
+  },
+  "definitions":{
+    "Client":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password":{
+          "type": "string"
+        },
+        "fone": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ export enum UserRole {
   BASIC = "basic",
 }
 
-@Entity("attendant")
+@Entity("attendants")
 class Attendant {
   @PrimaryColumn()
   id: string;

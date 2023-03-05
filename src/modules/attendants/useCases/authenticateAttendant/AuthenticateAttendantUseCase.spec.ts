@@ -1,6 +1,6 @@
-import { UserRole } from "@modules/attendant/infra/typeorm/entities/Attendant";
-import { IAttendantRepository } from "@modules/attendant/repositories/IAttendantRepository";
-import { AttendantRepositoryInMemory } from "@modules/attendant/repositories/in-memory/AttendantRepositoryInMemory";
+import { UserRole } from "@modules/attendants/infra/typeorm/entities/Attendant";
+import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
+import { AttendantRepositoryInMemory } from "@modules/attendants/repositories/in-memory/AttendantRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
 import { CreateAttendantUseCase } from "../createAttendant/CreateAttendantUseCase";
 import { AuthenticateAttendantUseCase } from "./AuthenticateAttendantUseCase";

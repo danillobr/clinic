@@ -1,6 +1,5 @@
-import { ICreateAttendantDTO } from "@modules/attendant/dtos/ICreateAttendantDTO";
-import { Attendant } from "@modules/attendant/infra/typeorm/entities/Attendant";
-
+import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
+import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 import { IAttendantRepository } from "../IAttendantRepository";
 
 class AttendantRepositoryInMemory implements IAttendantRepository {

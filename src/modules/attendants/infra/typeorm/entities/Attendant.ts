@@ -1,5 +1,11 @@
 import { v4 as uuidV4 } from "uuid";
-import { Entity, PrimaryColumn, Column, CreateDateColumn } from "typeorm";
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 export enum UserRole {
   ADMIN = "admin",

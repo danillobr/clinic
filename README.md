@@ -24,20 +24,22 @@ Esta é uma API que tem como função permitir que um cliente contrate serviços
 - [x]  Cadastrar os serviços prestador com `id`, `nome`, `valor`, `tempo`, `porcentagem`.
 - [x]  Listar os serviços prestados.
 - [x]  Listar os profissionais.
-- [x]  Atendente gerar relatório do atendimento com `id`, `comissão`, `tempo total`, `valor total`.
+- [x]  Listar todos os atendentes.
+- [x]  Gerar atendimento com `id`, `comissão`, `tempo total`, `valor total`.
 - [x]  Fazer login no sistema (atentende | cliente).
-- [x]  Criar atendimento com `id`, `id_cliente`, `id`,``,``,.
 
 ## :link: Rotas:
 - POST `/clients`: cria um novo cliente.
+- POST `/clients/sessions`: cliente se autenticar no sistema.
 - POST `/attendants`: cria um novo atendente.
+- POST `/attendants/sessions`: atendente se autenticar no sistema.
 - POST `/professionals`: cria um novo profissional.
 - POST `/services`: cria um novo serviço.
-- POST `/treatment`: cria o atendimento( quando cliente solicita um serviço ).
-- POTS `/summary`: cria o relatório
+- POST `/treatments`: cria o atendimento (quando cliente solicita um serviço).
 - GET `/professionals`: retorna todos os profisionais cadastrados.
 - GET `/services`: retorna todos os serviços que são prestados.
-- GET `/summary/{client_id}`: retorna o relatório do usuário.
+- GET `/attendants/`: retorna todos os atendentes cadastrados no sistema.
+- GET `/treatments/{client_id}`: retorna as informações do atendimento.
 - `localhost:3333/api-docs`: documentação da API com Swagger.
 
 ## :memo: Execução da API:

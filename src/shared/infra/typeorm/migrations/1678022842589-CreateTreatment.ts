@@ -50,7 +50,7 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             onUpdate: "SET NULL",
           },
           {
-            name: "FKattendantTratment",
+            name: "FKAttendantTratment",
             referencedTableName: "attendants",
             referencedColumnNames: ["id"],
             columnNames: ["attendant_id"],
@@ -58,7 +58,7 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             onUpdate: "SET NULL",
           },
           {
-            name: "FKprofessionalTratment",
+            name: "FKProfessionalTratment",
             referencedTableName: "professionals",
             referencedColumnNames: ["id"],
             columnNames: ["professional_id"],

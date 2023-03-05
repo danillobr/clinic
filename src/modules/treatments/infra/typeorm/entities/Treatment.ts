@@ -9,11 +9,11 @@ import {
   JoinTable,
   ManyToMany,
 } from "typeorm";
-import { Client } from "@modules/clients/infra/typeorm/entities/Client";
 
-import { Professional } from "@modules/professional/infra/typeorm/entities/Professional";
-import { Service } from "@modules/services/infra/typeorm/entities/Service";
-import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
+import { Client } from "../../../../clients/infra/typeorm/entities/Client";
+import { Professional } from "../../../../professional/infra/typeorm/entities/Professional";
+import { Service } from "../../../../services/infra/typeorm/entities/Service";
+import { Attendant } from "../../../../attendants/infra/typeorm/entities/Attendant";
 
 @Entity("treatments")
 class Treatment {

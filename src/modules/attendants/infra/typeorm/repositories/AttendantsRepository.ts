@@ -1,10 +1,10 @@
 import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
-import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
+import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
 import { Repository, getRepository } from "typeorm";
 
 import { Attendant } from "../entities/Attendant";
 
-class AttendantRepository implements IAttendantRepository {
+class AttendantsRepository implements IAttendantsRepository {
   private repository: Repository<Attendant>;
 
   constructor() {
@@ -36,6 +36,13 @@ class AttendantRepository implements IAttendantRepository {
   async findById(id: string): Promise<Attendant> {
     return await this.repository.findOne(id);
   }
+
+  async list(): Promise<Attendant[]> {
+    const all = this.repository.find({
+      select: ["name"],
+    });
+    return all;
+  }
 }
 
-export { AttendantRepository };
+export { AttendantsRepository };

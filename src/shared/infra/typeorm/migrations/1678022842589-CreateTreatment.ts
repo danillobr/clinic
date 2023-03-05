@@ -12,11 +12,11 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "totalAmount",
+            name: "total_amount",
             type: "numeric",
           },
           {
-            name: "totalCommission",
+            name: "total_commission",
             type: "numeric",
           },
           {

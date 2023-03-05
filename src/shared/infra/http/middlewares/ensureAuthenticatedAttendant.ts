@@ -2,7 +2,7 @@ import { Response, Request, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import auth from "@config/auth";
 import { AppError } from "@shared/errors/AppError";
-import { AttendantRepository } from "@modules/attendants/infra/typeorm/repositories/AttendantRepository";
+import { AttendantsRepository } from "@modules/attendants/infra/typeorm/repositories/AttendantsRepository";
 
 interface IPayload {
   sub: string;
@@ -24,9 +24,9 @@ export async function ensureAuthenticatedAttendant(
   try {
     const { sub: attendant_id } = verify(token, auth.secret_token) as IPayload;
 
-    const attendantRepository = new AttendantRepository();
+    const attendantsRepository = new AttendantsRepository();
 
-    const user = attendantRepository.findById(attendant_id);
+    const user = attendantsRepository.findById(attendant_id);
 
     if (!user) {
       throw new AppError("Attendant does not exists!", 401);

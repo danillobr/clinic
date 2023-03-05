@@ -20,6 +20,15 @@ class Treatment {
   @PrimaryColumn()
   id: string;
 
+  @Column()
+  total_amount: number;
+
+  @Column()
+  total_commission: number;
+
+  @CreateDateColumn()
+  created_at: Date;
+
   @OneToOne(() => Client)
   @JoinColumn({ name: "client_id" })
   client: Client;
@@ -39,15 +48,6 @@ class Treatment {
     inverseJoinColumns: [{ name: "service_id" }],
   })
   services: Service[];
-
-  @Column()
-  totalAmount: number;
-
-  @Column()
-  totalCommission: number;
-
-  @CreateDateColumn()
-  created_at: Date;
 
   constructor() {
     if (!this.id) {

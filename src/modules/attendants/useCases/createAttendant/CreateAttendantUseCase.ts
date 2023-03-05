@@ -2,15 +2,16 @@ import "reflect-metadata";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "@shared/errors/AppError";
 import { hash } from "bcrypt";
-import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
+
 import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
+import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
 
 @injectable()
 class CreateAttendantUseCase {
   constructor(
-    @inject("AttendantRepository")
-    private attendantRepository: IAttendantRepository
+    @inject("AttendantsRepository")
+    private attendantsRepository: IAttendantsRepository
   ) {}
 
   async execute({
@@ -19,7 +20,7 @@ class CreateAttendantUseCase {
     password,
     role,
   }: ICreateAttendantDTO): Promise<Attendant> {
-    const attendantAlreadyExists = await this.attendantRepository.findByEmail(
+    const attendantAlreadyExists = await this.attendantsRepository.findByEmail(
       email
     );
 
@@ -29,7 +30,7 @@ class CreateAttendantUseCase {
 
     const passwordHash = await hash(password, 8);
 
-    const attendant = await this.attendantRepository.create({
+    const attendant = await this.attendantsRepository.create({
       name,
       email,
       password: passwordHash,

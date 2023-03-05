@@ -13,12 +13,12 @@ import { IServicesRepository } from "@modules/services/repositories/IServicesRep
 import { Treatment } from "@modules/treatments/infra/typeorm/entities/Treatment";
 
 interface IRequest {
-  total_amount: number;
-  total_commission: number;
+  total_amount?: number;
+  total_commission?: number;
   client: Client;
   attendant: Attendant;
   professional: Professional;
-  services: Service[];
+  services: string[];
 }
 
 @injectable()
@@ -37,7 +37,6 @@ class CreateTreatmentUseCase {
   ) {}
 
   async execute({
-    total_commission,
     client,
     attendant,
     professional,
@@ -65,9 +64,17 @@ class CreateTreatmentUseCase {
       throw new AppError("Professional not exists!");
     }
 
-    const listServices = services.map((data) => data.id);
+    const listServices = services?.map((id) => id);
+
+    if (!listServices || listServices.length <= 0) {
+      throw new AppError("Invalid services");
+    }
 
     const total_amount = await this.servicesRepository.sumTotalAmount(
+      listServices
+    );
+
+    const total_commission = await this.servicesRepository.totalCommission(
       listServices
     );
 
@@ -77,7 +84,11 @@ class CreateTreatmentUseCase {
       client,
       attendant,
       professional,
-      services,
+      services: await Promise.all(
+        services.map(async (service_id) => {
+          return await this.servicesRepository.findById(service_id);
+        })
+      ),
     });
 
     return treatment;

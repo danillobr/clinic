@@ -37,6 +37,13 @@ class ServicesRepositoryInMemory implements IServicesRepository {
   sumTotalAmount(list_ids: string[]): Promise<number> {
     throw new Error("Method not implemented.");
   }
+
+  totalCommission(list_ids: string[]): Promise<number> {
+    throw new Error("Method not implemented.");
+  }
+  async findById(id: string): Promise<Service> {
+    return await this.services.find((service) => service.id === id);
+  }
 }
 
 export { ServicesRepositoryInMemory };

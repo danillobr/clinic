@@ -1,13 +1,15 @@
-FROM node:lts-alpine
+FROM node:16
 
-WORKDIR /usr/app
+WORKDIR /app
 
-COPY package.json ./
+COPY package* ./
 
-RUN npm install
+RUN npm install ts-node-dev
 
-COPY . .
+RUN npm install --ignore-scripts
+   
+COPY --chown=node:node ./ ./
 
 EXPOSE 3333
 
-CMD ["npm","run","dev"]
+ENTRYPOINT [ "./bin/setup.sh" ]

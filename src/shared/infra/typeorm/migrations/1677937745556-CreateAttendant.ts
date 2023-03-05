@@ -9,6 +9,7 @@ export class CreateAttendant1677937745556 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
           },
           {
             name: "name",

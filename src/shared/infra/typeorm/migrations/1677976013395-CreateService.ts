@@ -9,6 +9,7 @@ export class CreateService1677976013395 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
           },
           {
             name: "name",

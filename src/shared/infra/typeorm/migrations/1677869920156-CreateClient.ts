@@ -9,6 +9,7 @@ export class CreateClient1677869920156 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
           },
           {
             name: "name",

@@ -18,21 +18,22 @@
 Esta é uma API que tem como função permitir que um cliente contrate serviços de um profissional através de um atendimento gerenciado por um atendente, o cliente solicita o atendimento de algum(uns) serviço(s), o atendente passa os serviços solicitados para o professional que os realiza. Para cada serviço realizado o profissional receberá uma comissão em percentual do valor do serviço. A aplicação gera um relatório do atendimento e o atendente o passa para o cliente, no relatório tem o valor total dos serviços, quanto tempo vai levar para os serviços serem concluídos e o valor da comisão que o profissional irá receber. Com a execução do projeto é possível acessar a documentação da API desenvolvida com o [Swagger](https://swagger.io/).
 
 ## :hammer_and_wrench: Funcionalidades:
-- [x]  Criar um novo usuário com `nome`, `email`, `senha`, `CPF` e `telefone`.
-- [x]  Criar um novo atendente com `nome`, `email`, `senha`.
-- [x]  Cadastrar um profissonal com `nome` e `telefone`.
-- [x]  Cadastrar os serviços prestador com `nome`, `valor`, `tempo`, `porcentagem`.
-- [x]  Listar os serviços.
+- [x]  Criar um novo cliente com `id`, `nome`, `email`, `senha`, `CPF` e `telefone`.
+- [x]  Criar um novo atendente com `id`, `nome`, `email`, `senha`.
+- [x]  Cadastrar um profissonal com `id`, `nome` e `telefone`.
+- [x]  Cadastrar os serviços prestador com `id`, `nome`, `valor`, `tempo`, `porcentagem`.
+- [x]  Listar os serviços prestados.
 - [x]  Listar os profissionais.
-- [x]  Atendente gerar relatório do atendimento com `comissão`, `tempo total`, `valor total`.
+- [x]  Atendente gerar relatório do atendimento com `id`, `comissão`, `tempo total`, `valor total`.
 - [x]  Fazer login no sistema (atentende | cliente).
+- [x]  Criar atendimento com `id`, `id_cliente`, `id`,``,``,.
 
 ## :link: Rotas:
 - POST `/clients`: cria um novo cliente.
 - POST `/attendants`: cria um novo atendente.
 - POST `/professionals`: cria um novo profissional.
 - POST `/services`: cria um novo serviço.
-- POST `/treatment`: cria o atendimento.
+- POST `/treatment`: cria o atendimento( quando cliente solicita um serviço ).
 - POTS `/summary`: cria o relatório
 - GET `/professionals`: retorna todos os profisionais cadastrados.
 - GET `/services`: retorna todos os serviços que são prestados.

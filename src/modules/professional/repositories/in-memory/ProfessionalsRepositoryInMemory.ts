@@ -24,6 +24,11 @@ class ProfessionalsRepositoryInMemory implements IProfessionalsRepository {
       (professional) => professional.fone === fone
     );
   }
+
+  async list(): Promise<Professional[]> {
+    const all = this.professionals;
+    return all;
+  }
 }
 
 export { ProfessionalsRepositoryInMemory };

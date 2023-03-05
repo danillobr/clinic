@@ -24,6 +24,11 @@ class ProfessionalsRepository implements IProfessionalsRepository {
   async findByFone(fone: string): Promise<Professional> {
     return await this.repository.findOne({ fone });
   }
+
+  async list(): Promise<Professional[]> {
+    const professionals = await this.repository.find();
+    return professionals;
+  }
 }
 
 export { ProfessionalsRepository };

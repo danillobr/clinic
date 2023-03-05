@@ -3,14 +3,19 @@ import { ProfessionalsRepositoryInMemory } from "@modules/professional/repositor
 import { IProfessionalsRepository } from "@modules/professional/repositories/IProfessionalsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { CreateProfessionalUseCase } from "../createProfessional/CreateProfessionalUseCase";
+import { ListProfessionalsUseCase } from "./ListProfessionalsUseCase";
 
 let professionalsRepositoryInMemory: IProfessionalsRepository;
 let createProfessionalUseCase: CreateProfessionalUseCase;
+let listProfessionalsUseCase: ListProfessionalsUseCase;
 
 describe("List all professionals", () => {
   beforeEach(() => {
     professionalsRepositoryInMemory = new ProfessionalsRepositoryInMemory();
     createProfessionalUseCase = new CreateProfessionalUseCase(
+      professionalsRepositoryInMemory
+    );
+    listProfessionalsUseCase = new ListProfessionalsUseCase(
       professionalsRepositoryInMemory
     );
   });
@@ -40,7 +45,7 @@ describe("List all professionals", () => {
 
     professionals.push(prof1, prof2);
 
-    const listProfissionals = await professionalsRepositoryInMemory.list();
+    const listProfissionals = await listProfessionalsUseCase.execute();
 
     expect(listProfissionals).toEqual(professionals);
     expect(listProfissionals.length).toBe(2);

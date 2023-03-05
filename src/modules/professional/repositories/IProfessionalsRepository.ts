@@ -4,6 +4,7 @@ import { Professional } from "../infra/typeorm/entities/Professional";
 interface IProfessionalsRepository {
   create(data: ICreateProfessionalDTO): Promise<Professional>;
   findByFone(fone: string): Promise<Professional>;
+  list(): Promise<Professional[]>;
 }
 
 export { IProfessionalsRepository };

@@ -9,6 +9,7 @@ export class CreateProfessional1677958487851 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
           },
           {
             name: "name",

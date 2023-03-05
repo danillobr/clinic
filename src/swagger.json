@@ -45,10 +45,12 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "danillo@email.br"
                   },
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "uma senha segura"
                   }
                 }
               }  
@@ -103,10 +105,12 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "admin@atendente.com.br"
                   },
                   "password": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "admin"
                   }
                 }
               }  
@@ -182,6 +186,30 @@
           }
         }
       }
+    },
+    "/services": {
+      "post": {
+        "tags": ["Attendants"],
+        "summary": "Create a service",
+        "description": "Create a new service",
+        "security":[
+          {"bearerAuth": []}
+        ],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref": "#/definitions/Service"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "definitions":{
@@ -189,19 +217,24 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "example": "Danillo"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "example": "danillo@email.br"
         },
         "password":{
-          "type": "string"
+          "type": "string",
+          "example": "uma senha segura"
         },
         "fone": {
-          "type": "string"
+          "type": "string",
+          "example": "(82) 99999-9999"
         },
         "cpf": {
-          "type": "string"
+          "type": "string",
+          "example": "111.111.111-11"
         }
       }
     },
@@ -209,17 +242,21 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "example": "César"
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "example": "cesar@email.br"
         },
         "password":{
-          "type": "string"
+          "type": "string",
+          "example": "uma senha segura"
         },
         "role": {
           "type": "string",
-          "enum": ["admin", "basic"]
+          "enum": ["admin", "basic"],
+          "example": "basic"
         }
       }
     },
@@ -227,10 +264,33 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"         
+          "type": "string",
+          "example": "João"       
         },
         "fone": {
-          "type": "string"
+          "type": "string",
+          "example": "(82) 98888-8888"
+        }
+      }
+    },
+    "Service":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Restauração"       
+        },
+        "value": {
+          "type": "number",
+          "example": "50.99"
+        },
+        "time": {
+          "type": "number",
+          "example": "20"         
+        },
+        "percentage": {
+          "type": "number",
+          "example": "12"         
         }
       }
     }

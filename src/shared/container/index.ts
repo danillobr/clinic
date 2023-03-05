@@ -7,6 +7,8 @@ import { IProfessionalsRepository } from "@modules/professional/repositories/IPr
 import { ProfessionalsRepository } from "@modules/professional/infra/typeorm/repositories/ProfessionalsRepository";
 import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
 import { AttendantRepository } from "@modules/attendants/infra/typeorm/repositories/AttendantRepository";
+import { IServicesRepository } from "@modules/services/repositories/IServicesRepository";
+import { ServicesRepository } from "@modules/services/infra/typeorm/repositories/ServicesRepository";
 
 container.registerSingleton<IClientsRepository>(
   "ClientsRepository",
@@ -21,4 +23,9 @@ container.registerSingleton<IAttendantRepository>(
 container.registerSingleton<IProfessionalsRepository>(
   "ProfessionalsRepository",
   ProfessionalsRepository
+);
+
+container.registerSingleton<IServicesRepository>(
+  "ServicesRepository",
+  ServicesRepository
 );

@@ -1,5 +1,5 @@
-import { ICreateAttendantDTO } from "@modules/attendant/dtos/ICreateAttendantDTO";
-import { IAttendantRepository } from "@modules/attendant/repositories/IAttendantRepository";
+import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
+import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
 import { Repository, getRepository } from "typeorm";
 
 import { Attendant } from "../entities/Attendant";

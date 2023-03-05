@@ -4,19 +4,19 @@ import {
   PrimaryColumn,
   Column,
   CreateDateColumn,
-  ManyToOne,
   JoinColumn,
   OneToOne,
   JoinTable,
   ManyToMany,
 } from "typeorm";
 import { Client } from "@modules/clients/infra/typeorm/entities/Client";
-import { Attendant } from "./Attendant";
+
 import { Professional } from "@modules/professional/infra/typeorm/entities/Professional";
 import { Service } from "@modules/services/infra/typeorm/entities/Service";
+import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 
 @Entity("treatments")
-class treatment {
+class Treatment {
   @PrimaryColumn()
   id: string;
 
@@ -56,4 +56,4 @@ class treatment {
   }
 }
 
-export { treatment };
+export { Treatment };

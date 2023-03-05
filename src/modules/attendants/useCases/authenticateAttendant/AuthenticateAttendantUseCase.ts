@@ -1,10 +1,9 @@
-import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import auth from "@config/auth";
-import { IAttendantRepository } from "@modules/attendant/repositories/IAttendantRepository";
+import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
 
 interface IResponse {
   attendant: {

@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "@shared/errors/AppError";
-import { AttendantRepository } from "@modules/attendant/infra/typeorm/repositories/AttendantRepository";
-import { UserRole } from "@modules/attendant/infra/typeorm/entities/Attendant";
+import { AttendantRepository } from "@modules/attendants/infra/typeorm/repositories/AttendantRepository";
+import { UserRole } from "@modules/attendants/infra/typeorm/entities/Attendant";
 
 export async function ensureAttendantAdmin(
   request: Request,

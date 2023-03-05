@@ -2,10 +2,9 @@ import "reflect-metadata";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "@shared/errors/AppError";
 import { hash } from "bcrypt";
-
-import { IAttendantRepository } from "@modules/attendant/repositories/IAttendantRepository";
-import { ICreateAttendantDTO } from "@modules/attendant/dtos/ICreateAttendantDTO";
-import { Attendant } from "@modules/attendant/infra/typeorm/entities/Attendant";
+import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
+import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
+import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
 
 @injectable()
 class CreateAttendantUseCase {

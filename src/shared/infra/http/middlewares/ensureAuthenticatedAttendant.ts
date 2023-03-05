@@ -2,7 +2,7 @@ import { Response, Request, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
 import auth from "@config/auth";
 import { AppError } from "@shared/errors/AppError";
-import { AttendantRepository } from "@modules/attendant/infra/typeorm/repositories/AttendantRepository";
+import { AttendantRepository } from "@modules/attendants/infra/typeorm/repositories/AttendantRepository";
 
 interface IPayload {
   sub: string;

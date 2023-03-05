@@ -32,6 +32,14 @@ class TreatmentsRepository implements ITreatmentsRepository {
 
     return treatment;
   }
+
+  async listByClient(id: string): Promise<Treatment[]> {
+    return await this.repository.find({ client: { id } });
+  }
+
+  async list(): Promise<Treatment[]> {
+    return await this.repository.find();
+  }
 }
 
 export { TreatmentsRepository };

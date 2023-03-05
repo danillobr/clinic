@@ -26,11 +26,13 @@ export async function ensureAuthenticatedClient(
 
     const clientRepository = new ClientsRepository();
 
-    const user = clientRepository.findById(client_id);
+    const user = await clientRepository.findById(client_id);
 
     if (!user) {
       throw new AppError("User does not exists!", 401);
     }
+
+    request.body.client_id = user.id;
 
     next();
   } catch {

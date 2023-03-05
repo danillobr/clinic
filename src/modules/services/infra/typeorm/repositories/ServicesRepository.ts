@@ -32,6 +32,11 @@ class ServicesRepository implements IServicesRepository {
   async findByName(name: string): Promise<Service> {
     return await this.repository.findOne({ name });
   }
+
+  async list(): Promise<Service[]> {
+    const services = await this.repository.find();
+    return services;
+  }
 }
 
 export { ServicesRepository };

@@ -29,6 +29,10 @@ class ProfessionalsRepositoryInMemory implements IProfessionalsRepository {
     const all = this.professionals;
     return all;
   }
+
+  async findById(id: string): Promise<Professional> {
+    return this.professionals.find((professional) => professional.id === id);
+  }
 }
 
 export { ProfessionalsRepositoryInMemory };

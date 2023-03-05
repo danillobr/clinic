@@ -33,6 +33,10 @@ class ServicesRepositoryInMemory implements IServicesRepository {
     const all = this.services;
     return all;
   }
+
+  sumTotalAmount(list_ids: string[]): Promise<number> {
+    throw new Error("Method not implemented.");
+  }
 }
 
 export { ServicesRepositoryInMemory };

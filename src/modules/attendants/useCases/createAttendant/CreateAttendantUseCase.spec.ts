@@ -1,15 +1,16 @@
 import { UserRole } from "@modules/attendants/infra/typeorm/entities/Attendant";
-import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
-import { AttendantRepositoryInMemory } from "@modules/attendants/repositories/in-memory/AttendantRepositoryInMemory";
+import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
+import { AttendantsRepositoryInMemory } from "@modules/attendants/repositories/in-memory/AttendantsRepositoryInMemory";
+
 import { AppError } from "@shared/errors/AppError";
 import { CreateAttendantUseCase } from "./CreateAttendantUseCase";
 
-let attendantRepositoryInMemory: IAttendantRepository;
+let attendantRepositoryInMemory: IAttendantsRepository;
 let attendantClientUseCase: CreateAttendantUseCase;
 
 describe("Create attendant", () => {
   beforeEach(() => {
-    attendantRepositoryInMemory = new AttendantRepositoryInMemory();
+    attendantRepositoryInMemory = new AttendantsRepositoryInMemory();
     attendantClientUseCase = new CreateAttendantUseCase(
       attendantRepositoryInMemory
     );

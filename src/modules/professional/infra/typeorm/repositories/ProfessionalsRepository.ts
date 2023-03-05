@@ -29,6 +29,10 @@ class ProfessionalsRepository implements IProfessionalsRepository {
     const professionals = await this.repository.find();
     return professionals;
   }
+
+  async findById(id: string): Promise<Professional> {
+    return await this.repository.findOne(id);
+  }
 }
 
 export { ProfessionalsRepository };

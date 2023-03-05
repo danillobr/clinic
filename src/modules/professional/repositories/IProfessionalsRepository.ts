@@ -5,6 +5,7 @@ interface IProfessionalsRepository {
   create(data: ICreateProfessionalDTO): Promise<Professional>;
   findByFone(fone: string): Promise<Professional>;
   list(): Promise<Professional[]>;
+  findById(id: string): Promise<Professional>;
 }
 
 export { IProfessionalsRepository };

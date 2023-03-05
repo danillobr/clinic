@@ -3,7 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import auth from "@config/auth";
-import { IAttendantRepository } from "@modules/attendants/repositories/IAttendantRepository";
+import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
 
 interface IResponse {
   attendant: {
@@ -21,13 +21,13 @@ interface IRequest {
 @injectable()
 class AuthenticateAttendantUseCase {
   constructor(
-    @inject("AttendantRepository")
-    private attendantRepository: IAttendantRepository
+    @inject("AttendantsRepository")
+    private attendantsRepository: IAttendantsRepository
   ) {}
 
   async execute({ email, password }: IRequest): Promise<IResponse> {
     //Attendant existe?
-    const attendant = await this.attendantRepository.findByEmail(email);
+    const attendant = await this.attendantsRepository.findByEmail(email);
 
     if (!attendant) {
       throw new AppError("Email or password incorrect!");

@@ -1,8 +1,8 @@
 import { ICreateAttendantDTO } from "@modules/attendants/dtos/ICreateAttendantDTO";
 import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
-import { IAttendantRepository } from "../IAttendantRepository";
+import { IAttendantsRepository } from "../IAttendantsRepository";
 
-class AttendantRepositoryInMemory implements IAttendantRepository {
+class AttendantsRepositoryInMemory implements IAttendantsRepository {
   attendants: Attendant[] = [];
 
   async create({
@@ -32,6 +32,11 @@ class AttendantRepositoryInMemory implements IAttendantRepository {
   async findById(id: string): Promise<Attendant> {
     return this.attendants.find((attendant) => attendant.id === id);
   }
+
+  async list(): Promise<Attendant[]> {
+    const all = this.attendants;
+    return all;
+  }
 }
 
-export { AttendantRepositoryInMemory };
+export { AttendantsRepositoryInMemory };

@@ -66,7 +66,8 @@
           }
         }  
       } 
-    },"/attendants": {
+    },
+    "/attendants": {
       "post": {
         "tags": ["Attendants"],
         "summary": "Create a attendant",
@@ -89,6 +90,31 @@
           },
           "400":{
             "description": "Attendant already exists!"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Attendants", "Clients"
+        ],
+        "summary": "List all attendants",
+        "description": "List all attendants",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -243,6 +269,33 @@
           }
         }
       }
+    },
+    "/treatments":{
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Create a Treatment",
+        "description": "Create a Treatment",
+        "security":[
+          {"bearerAuth": []}
+        ],
+        "requestBody":{
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Treatment"
+              }
+            }
+          }
+        },
+        "responses":{
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Professional or Client or Attendant not exists!"
+          }
+        }
+      }
     }
   },
   "definitions":{
@@ -324,6 +377,23 @@
         "percentage": {
           "type": "number",
           "example": "12"         
+        }
+      }
+    },
+    "Treatment":{
+      "type": "object",
+      "properties": {
+        "client": {
+          "type": "string",
+          "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
+        },
+        "attendant": {
+          "type": "string",
+          "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
+        },
+        "professional": {
+          "type": "string",
+          "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
         }
       }
     }

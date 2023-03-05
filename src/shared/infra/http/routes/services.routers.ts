@@ -16,6 +16,6 @@ servicesRouters.post(
   createServiceController.handle
 );
 
-servicesRouters.get("/list", listServicesController.handle);
+servicesRouters.get("/", listServicesController.handle);
 
 export { servicesRouters };

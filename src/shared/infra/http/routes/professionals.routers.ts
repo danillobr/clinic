@@ -16,10 +16,6 @@ professionalsRouters.post(
   createProfessionalController.handle
 );
 
-professionalsRouters.get(
-  "/list",
-  ensureAuthenticatedAttendant,
-  listProfissionalsController.handle
-);
+professionalsRouters.get("/", listProfissionalsController.handle);
 
 export { professionalsRouters };

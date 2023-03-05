@@ -28,6 +28,11 @@ class ServicesRepositoryInMemory implements IServicesRepository {
   async findByName(name: string): Promise<Service> {
     return this.services.find((service) => service.name === name);
   }
+
+  async list(): Promise<Service[]> {
+    const all = this.services;
+    return all;
+  }
 }
 
 export { ServicesRepositoryInMemory };

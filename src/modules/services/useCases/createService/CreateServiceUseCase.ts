@@ -19,7 +19,7 @@ class CreateServiceUseCase {
   }: ICreateServiceDTO): Promise<Service> {
     const serviceAlreadyExist = await this.servicesRepository.findByName(name);
 
-    if (!serviceAlreadyExist) {
+    if (serviceAlreadyExist) {
       throw new AppError("Service already exists!");
     }
 

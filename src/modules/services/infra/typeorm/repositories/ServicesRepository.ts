@@ -47,6 +47,15 @@ class ServicesRepository implements IServicesRepository {
     return total;
   }
 
+  async sumTotalTimeServices(list_ids: string[]): Promise<number> {
+    const serviceList = await this.repository.findByIds(list_ids);
+    const total = serviceList.reduce((accumulator, value) => {
+      return accumulator + value.time;
+    }, 0);
+
+    return total;
+  }
+
   async totalCommission(list_ids: string[]): Promise<number> {
     const serviceList = await this.repository.findByIds(list_ids);
     const total = serviceList.reduce((accumulator, value) => {

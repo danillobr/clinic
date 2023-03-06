@@ -21,6 +21,9 @@ class Treatment {
   id: string;
 
   @Column()
+  total_time_services: number;
+
+  @Column()
   total_amount: number;
 
   @Column()

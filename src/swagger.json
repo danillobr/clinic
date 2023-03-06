@@ -454,6 +454,13 @@
         "professional": {
           "type": "string",
           "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
+        },
+        "services":{
+          "type": "array",
+          "items":{
+            "types": "string",
+            "example": "c99876c6-1891-4148-a851-724531d9bc3f"
+          }
         }
       }
     }

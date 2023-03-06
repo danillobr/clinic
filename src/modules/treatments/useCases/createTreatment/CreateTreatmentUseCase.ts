@@ -67,8 +67,6 @@ class CreateTreatmentUseCase {
     const total_time_services =
       await this.servicesRepository.sumTotalTimeServices(listServices);
 
-    console.log(total_time_services);
-
     const treatment = await this.treatmentsRepository.create({
       total_amount,
       total_commission,

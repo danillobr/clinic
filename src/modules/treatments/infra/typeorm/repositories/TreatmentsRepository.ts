@@ -48,7 +48,6 @@ class TreatmentsRepository implements ITreatmentsRepository {
   async updateTime(id: string): Promise<boolean> {
     if ((await this.repository.find({ id, begin_time: null }))?.length > 0) {
       await this.repository.update({ id }, { begin_time: new Date() });
-      console.log(id);
 
       return true;
     }

@@ -52,8 +52,7 @@ class ServicesRepository implements IServicesRepository {
     const total = serviceList.reduce((accumulator, value) => {
       return accumulator + Number(value.time);
     }, 0);
-    console.log(total);
-    console.log("oi aqui");
+
     return total;
   }
 

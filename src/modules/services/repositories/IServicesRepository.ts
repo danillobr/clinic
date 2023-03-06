@@ -7,6 +7,7 @@ interface IServicesRepository {
   list(): Promise<Service[]>;
   sumTotalAmount(list_ids: string[]): Promise<number>;
   totalCommission(list_ids: string[]): Promise<number>;
+  sumTotalTimeServices(list_ids: string[]): Promise<number>;
   findById(id: string): Promise<Service>;
 }
 

@@ -6,6 +6,7 @@ import { Service } from "@modules/services/infra/typeorm/entities/Service";
 interface ICreateTreatmentDTO {
   total_amount: number;
   total_commission: number;
+  total_time_services: number;
   client: Client;
   attendant: Attendant;
   professional: Professional;

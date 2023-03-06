@@ -16,6 +16,10 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             type: "numeric",
           },
           {
+            name: "total_time_services",
+            type: "numeric",
+          },
+          {
             name: "total_commission",
             type: "numeric",
           },

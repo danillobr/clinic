@@ -4,7 +4,6 @@ import { ITreatmentsRepository } from "@modules/treatments/repositories/ITreatme
 import { Client } from "@modules/clients/infra/typeorm/entities/Client";
 import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 import { Professional } from "@modules/professional/infra/typeorm/entities/Professional";
-import { Service } from "@modules/services/infra/typeorm/entities/Service";
 import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { IProfessionalsRepository } from "@modules/professional/repositories/IProfessionalsRepository";
 import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
@@ -15,6 +14,7 @@ import { Treatment } from "@modules/treatments/infra/typeorm/entities/Treatment"
 interface IRequest {
   total_amount?: number;
   total_commission?: number;
+  total_time_services?: number;
   client: Client;
   attendant: Attendant;
   professional: Professional;
@@ -78,9 +78,13 @@ class CreateTreatmentUseCase {
       listServices
     );
 
+    const total_time_services =
+      await this.servicesRepository.sumTotalTimeServices(listServices);
+
     const treatment = await this.treatmentsRepository.create({
       total_amount,
       total_commission,
+      total_time_services,
       client,
       attendant,
       professional,

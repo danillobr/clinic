@@ -14,16 +14,20 @@ class TreatmentsRepository implements ITreatmentsRepository {
   async create({
     total_amount,
     total_commission,
+    total_time_services,
+    begin_time,
+    end_time,
     client,
-    attendant,
     professional,
     services,
   }: ICreateTreatmentDTO): Promise<Treatment> {
     const treatment = this.repository.create({
       total_amount,
       total_commission,
+      total_time_services,
+      begin_time,
+      end_time,
       client,
-      attendant,
       professional,
       services,
     });
@@ -39,6 +43,22 @@ class TreatmentsRepository implements ITreatmentsRepository {
 
   async list(): Promise<Treatment[]> {
     return await this.repository.find();
+  }
+
+  async updateTime(id: string): Promise<boolean> {
+    if ((await this.repository.find({ id, begin_time: null }))?.length > 0) {
+      await this.repository.update({ id }, { begin_time: new Date() });
+
+      return true;
+    }
+
+    if ((await this.repository.find({ id, end_time: null }))?.length > 0) {
+      await this.repository.update({ id }, { end_time: new Date() });
+
+      return true;
+    }
+
+    return false;
   }
 }
 

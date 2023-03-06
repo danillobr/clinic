@@ -11,10 +11,28 @@ class ListTreatmentUseCase {
     private treatmentsRepository: ITreatmentsRepository
   ) {}
 
+  private calculeDate(begin_time: Date, end_time: Date): number {
+    return (
+      (new Date(end_time).getTime() - new Date(begin_time).getTime()) /
+      1000 /
+      60
+    );
+  }
+
   async execute(): Promise<Treatment[]> {
     const treatmentsExists = await this.treatmentsRepository.list();
 
-    return treatmentsExists;
+    const listTreatmentWithTime = treatmentsExists.map((treatment) => {
+      return {
+        ...treatment,
+        applied_time:
+          treatment.begin_time && treatment.end_time
+            ? this.calculeDate(treatment.begin_time, treatment.end_time)
+            : null,
+      };
+    });
+
+    return listTreatmentWithTime;
   }
 }
 

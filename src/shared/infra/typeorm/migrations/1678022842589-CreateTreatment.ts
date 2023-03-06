@@ -29,11 +29,6 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: "attendant_id",
-            type: "uuid",
-            isNullable: true,
-          },
-          {
             name: "professional_id",
             type: "uuid",
             isNullable: true,
@@ -43,6 +38,18 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             type: "timestamp",
             default: "now()",
           },
+          {
+            name: "begin_time",
+            type: "timestamp",
+            isNullable: true,
+            default: null,
+          },
+          {
+            name: "end_time",
+            type: "timestamp",
+            isNullable: true,
+            default: null,
+          },
         ],
         foreignKeys: [
           {
@@ -50,14 +57,6 @@ export class CreateTreatment1678022842589 implements MigrationInterface {
             referencedTableName: "clients",
             referencedColumnNames: ["id"],
             columnNames: ["client_id"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL",
-          },
-          {
-            name: "FKAttendantTratment",
-            referencedTableName: "attendants",
-            referencedColumnNames: ["id"],
-            columnNames: ["attendant_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
           },

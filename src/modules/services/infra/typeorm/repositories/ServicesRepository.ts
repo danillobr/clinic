@@ -41,7 +41,7 @@ class ServicesRepository implements IServicesRepository {
   async sumTotalAmount(list_ids: string[]): Promise<number> {
     const serviceList = await this.repository.findByIds(list_ids);
     const total = serviceList.reduce((accumulator, value) => {
-      return accumulator + value.value;
+      return accumulator + Number(value.value);
     }, 0);
 
     return total;
@@ -50,7 +50,7 @@ class ServicesRepository implements IServicesRepository {
   async sumTotalTimeServices(list_ids: string[]): Promise<number> {
     const serviceList = await this.repository.findByIds(list_ids);
     const total = serviceList.reduce((accumulator, value) => {
-      return accumulator + value.time;
+      return accumulator + Number(value.time);
     }, 0);
 
     return total;
@@ -59,7 +59,9 @@ class ServicesRepository implements IServicesRepository {
   async totalCommission(list_ids: string[]): Promise<number> {
     const serviceList = await this.repository.findByIds(list_ids);
     const total = serviceList.reduce((accumulator, value) => {
-      return accumulator + value.value * value.percentage * 0.01;
+      return (
+        accumulator + Number(value.value) * Number(value.percentage) * 0.01
+      );
     }, 0);
 
     return total;

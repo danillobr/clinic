@@ -27,6 +27,7 @@ Esta é uma API que tem como função permitir que um cliente contrate serviços
 - [x]  Listar todos os atendentes.
 - [x]  Gerar atendimento com `id`, `comissão`, `tempo total`, `valor total`.
 - [x]  Fazer login no sistema (atentende | cliente).
+- [x]  Iniciarlizar e finalziar atendimento.
 
 ## :link: Rotas:
 - POST `/clients`: cria um novo cliente.
@@ -36,6 +37,7 @@ Esta é uma API que tem como função permitir que um cliente contrate serviços
 - POST `/professionals`: cria um novo profissional.
 - POST `/services`: cria um novo serviço.
 - POST `/treatments`: cria o atendimento (quando cliente solicita um serviço).
+- POST `/treatments/execute`: inicializa ou finaliza o atendimento.
 - GET `/professionals`: retorna todos os profisionais cadastrados.
 - GET `/services`: retorna todos os serviços que são prestados.
 - GET `/attendants/`: retorna todos os atendentes cadastrados no sistema.

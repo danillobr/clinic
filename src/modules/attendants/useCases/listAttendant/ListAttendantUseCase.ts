@@ -12,7 +12,6 @@ class ListAttendantUseCase {
   async execute(): Promise<Attendant[]> {
     const attendants = await this.attendantsRepository.list();
 
-    console.log(attendants);
     return attendants;
   }
 }

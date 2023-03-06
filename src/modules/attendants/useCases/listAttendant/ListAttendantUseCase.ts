@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+
 import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
 import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 

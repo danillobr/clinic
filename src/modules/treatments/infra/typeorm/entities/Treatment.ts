@@ -13,7 +13,6 @@ import {
 import { Client } from "../../../../clients/infra/typeorm/entities/Client";
 import { Professional } from "../../../../professional/infra/typeorm/entities/Professional";
 import { Service } from "../../../../services/infra/typeorm/entities/Service";
-import { Attendant } from "../../../../attendants/infra/typeorm/entities/Attendant";
 
 @Entity("treatments")
 class Treatment {
@@ -36,10 +35,6 @@ class Treatment {
   @JoinColumn({ name: "client_id" })
   client: Client;
 
-  @OneToOne(() => Attendant)
-  @JoinColumn({ name: "attendant_id" })
-  attendant: Attendant;
-
   @OneToOne(() => Professional)
   @JoinColumn({ name: "professional_id" })
   professional: Professional;
@@ -51,6 +46,14 @@ class Treatment {
     inverseJoinColumns: [{ name: "service_id" }],
   })
   services: Service[];
+
+  @CreateDateColumn()
+  begin_time: Date;
+
+  @CreateDateColumn()
+  end_time: Date;
+
+  applied_time: number;
 
   constructor() {
     if (!this.id) {

@@ -2,11 +2,9 @@ import { inject, injectable } from "tsyringe";
 
 import { ITreatmentsRepository } from "@modules/treatments/repositories/ITreatmentsRepository";
 import { Client } from "@modules/clients/infra/typeorm/entities/Client";
-import { Attendant } from "@modules/attendants/infra/typeorm/entities/Attendant";
 import { Professional } from "@modules/professional/infra/typeorm/entities/Professional";
 import { IClientsRepository } from "@modules/clients/repositories/IClientsRepository";
 import { IProfessionalsRepository } from "@modules/professional/repositories/IProfessionalsRepository";
-import { IAttendantsRepository } from "@modules/attendants/repositories/IAttendantsRepository";
 import { AppError } from "@shared/errors/AppError";
 import { IServicesRepository } from "@modules/services/repositories/IServicesRepository";
 import { Treatment } from "@modules/treatments/infra/typeorm/entities/Treatment";
@@ -16,7 +14,6 @@ interface IRequest {
   total_commission?: number;
   total_time_services?: number;
   client: Client;
-  attendant: Attendant;
   professional: Professional;
   services: string[];
 }
@@ -30,26 +27,15 @@ class CreateTreatmentUseCase {
     private clientsRepository: IClientsRepository,
     @inject("ProfessionalsRepository")
     private professionalsRepository: IProfessionalsRepository,
-    @inject("AttendantsRepository")
-    private attendantsRepository: IAttendantsRepository,
     @inject("ServicesRepository")
     private servicesRepository: IServicesRepository
   ) {}
 
   async execute({
     client,
-    attendant,
     professional,
     services,
   }: IRequest): Promise<Treatment> {
-    const attendantExist = await this.attendantsRepository.findById(
-      attendant.id
-    );
-
-    if (!attendantExist) {
-      throw new AppError("Attendant not exists!");
-    }
-
     const clientExist = await this.clientsRepository.findById(client.id);
 
     if (!clientExist) {
@@ -81,12 +67,13 @@ class CreateTreatmentUseCase {
     const total_time_services =
       await this.servicesRepository.sumTotalTimeServices(listServices);
 
+    console.log(total_time_services);
+
     const treatment = await this.treatmentsRepository.create({
       total_amount,
       total_commission,
       total_time_services,
       client,
-      attendant,
       professional,
       services: await Promise.all(
         services.map(async (service_id) => {

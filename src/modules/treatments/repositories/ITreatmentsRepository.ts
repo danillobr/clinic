@@ -5,6 +5,7 @@ interface ITreatmentsRepository {
   create(data: ICreateTreatmentDTO): Promise<Treatment>;
   listByClient(id: string): Promise<Treatment[]>;
   list(): Promise<Treatment[]>;
+  updateTime(id: string): Promise<boolean>;
 }
 
 export { ITreatmentsRepository };

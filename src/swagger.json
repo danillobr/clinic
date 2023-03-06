@@ -356,7 +356,41 @@
           }
         }
       }
+    },
+    "/treatments/execute":{
+      "post": {
+        "tags": ["Attendants"],
+        "summary": "Execute a Treatment",
+        "description": "Execute a Treatment",
+        "security":[
+          {"bearerAuth": []}
+        ],
+        "requestBody":{
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "treadment_id": {
+                    "type": "string",
+                    "example": "d5246406-6e25-4f60-a5a7-05dc0da9e844"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid ID!"
+          }
+        }
+      }
     }
+    
   },
   "definitions":{
     "Client":{
@@ -444,10 +478,6 @@
       "type": "object",
       "properties": {
         "client": {
-          "type": "string",
-          "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
-        },
-        "attendant": {
           "type": "string",
           "example": "c99876c6-1891-4148-a851-724531d9bc3f"         
         },
